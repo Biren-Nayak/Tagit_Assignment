@@ -7,9 +7,12 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tagitassignment.R
 import com.example.tagitassignment.adapters.JobOrderListAdapter
 import com.example.tagitassignment.databinding.ActivityMainBinding
 import com.example.tagitassignment.models.JobOrder
@@ -45,7 +48,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.searchCloseButton.setOnClickListener { changeSearchVisibility(false) }
 
-
+        supportActionBar?.setBackgroundDrawable(
+            ContextCompat.getColor(this, R.color.black).toDrawable()
+        )
 
         binding.txtSearch.addTextChangedListener{
             viewModel.setQuery(it.toString())

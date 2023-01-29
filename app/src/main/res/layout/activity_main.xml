@@ -50,10 +50,11 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:contentDescription="@string/search"
+            app:tint="?colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_search"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
         <ImageButton
             android:id="@+id/search_close_button"
