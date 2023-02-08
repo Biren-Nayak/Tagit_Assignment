@@ -5,7 +5,7 @@ package com.example.tagitassignment.di
 import android.app.Application
 import androidx.room.Room
 import com.example.tagitassignment.api.JobOrderApi
-import com.example.tagitassignment.repository.JobOrderRepository
+import com.example.tagitassignment.repository.JobOrderRepositoryImpl
 import com.example.tagitassignment.caching.JobOrdersDao
 import com.example.tagitassignment.caching.JobOrdersDatabase
 import com.example.tagitassignment.utils.ApiUtils.BASE_URL
@@ -25,7 +25,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun myRepoImpl(api: JobOrderApi, dao: JobOrdersDao) = JobOrderRepository(api, dao)
+    fun myRepoImpl(api: JobOrderApi, dao: JobOrdersDao) = JobOrderRepositoryImpl(api, dao)
 
     
     @Provides

@@ -2,13 +2,14 @@ package com.example.tagitassignment.repository
 
 import com.example.tagitassignment.api.JobOrderApi
 import com.example.tagitassignment.caching.JobOrdersDao
+import com.example.tagitassignment.models.JobOrder
 import javax.inject.Inject
 
-class JobOrderRepository @Inject constructor(private val api: JobOrderApi, private val dao: JobOrdersDao) {
+class JobOrderRepositoryImpl @Inject constructor(private val api: JobOrderApi, private val dao: JobOrdersDao): Repository<JobOrder>{
 
-    fun getOrders() =  dao.getAllJobOrders()
+    override fun fetchList() =  dao.getAllJobOrders()
 
-    suspend fun refreshJobOrderLists(){
+    override suspend fun refresh(){
 
         val list = api.getJobOrderList().jobOrderList
 

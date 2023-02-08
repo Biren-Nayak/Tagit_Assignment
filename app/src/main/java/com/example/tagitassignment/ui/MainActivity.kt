@@ -3,7 +3,8 @@ package com.example.tagitassignment.ui
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -63,23 +64,27 @@ class MainActivity : AppCompatActivity() {
     private fun changeSearchVisibility(isVisible: Boolean) {
 
         if (isVisible){
-            binding.searchButton.visibility = View.GONE
-            binding.txtSearch.visibility = View.VISIBLE
+            binding.searchButton.visibility = GONE
 
-            binding.searchCloseButton.visibility = View.VISIBLE
+            binding.searchCloseButton.visibility = VISIBLE
 
-            binding.txtSearch.requestFocus()
-            showSoftKeyboard(binding.txtSearch)
+            binding.txtSearch.apply {
+                visibility = VISIBLE
+                requestFocus()
+                showSoftKeyboard(this)
+            }
 
         }else{
-            binding.searchButton.visibility = View.VISIBLE
-            binding.txtSearch.visibility = View.GONE
+            binding.searchButton.visibility = VISIBLE
 
-            binding.searchCloseButton.visibility = View.GONE
+            binding.searchCloseButton.visibility = GONE
 
-            binding.txtSearch.clearFocus()
-            binding.txtSearch.text.clear()
-            hideSoftKeyboard(binding.txtSearch)
+            binding.txtSearch.apply {
+                visibility = GONE
+                clearFocus()
+                text.clear()
+                hideSoftKeyboard(this)
+            }
 
         }
 
